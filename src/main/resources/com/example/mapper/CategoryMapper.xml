@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.CategoryMapper">
+    <insert id="add" parameterType="com.example.pojo.Category">
+        insert into housekeeping.category(name, status, create_time, update_time)
+        values (#{name}, #{status}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update" parameterType="com.example.pojo.Category">
+        update housekeeping.category
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="newList" resultType="com.example.pojo.Category">
+        select * from housekeeping.category where status = 0
+    </select>
+
+    <select id="list" resultType="com.example.pojo.Category">
+        select * from housekeeping.category
+    </select>
+</mapper>
+
+

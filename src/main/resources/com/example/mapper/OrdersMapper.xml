@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.OrdersMapper">
+
+    <insert id="add" parameterType="com.example.pojo.Orders">
+        INSERT INTO orders (order_number, staff_id, staff_name, staff_image, hourly_rate, payment_method, status,
+                            order_time, update_time, user_id)
+        VALUES (#{orderNumber}, #{staffId}, #{staffName}, #{staffImage}, #{hourlyRate}, #{paymentMethod}, #{status},
+                #{orderTime}, #{updateTime}, #{userId})
+    </insert>
+
+    <select id="list" resultType="com.example.pojo.Orders">
+        select *
+        from housekeeping.orders
+        ORDER BY order_time DESC
+    </select>
+
+</mapper>
+
+

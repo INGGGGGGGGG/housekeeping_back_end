@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.DomesticWorkerMapper">
+    <insert id="add" parameterType="com.example.pojo.DomesticWorker">
+        INSERT INTO housekeeping.domestic_workers (name, service_category, profile_picture, introduction, hourly_rate,
+                                                   phone_number, age, gender, region, status, create_time, update_time)
+        VALUES (#{name}, #{serviceCategory}, #{profilePicture}, #{introduction}, #{hourlyRate}, #{phoneNumber}, #{age},
+                #{gender}, #{region}, #{status}, #{createTime}, #{updateTime})
+    </insert>
+
+    <select id="newList" resultType="com.example.pojo.DomesticWorker">
+        select * from housekeeping.domestic_workers where
+        status = 0
+        <if test="name != null">
+            and name like concat('%',#{name},'%')
+        </if>
+    </select>
+
+    <update id="update" parameterType="com.example.pojo.DomesticWorker">
+        UPDATE housekeeping.domestic_workers
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="serviceCategory != null">
+                service_category = #{serviceCategory},
+            </if>
+            <if test="profilePicture != null">
+                profile_picture = #{profilePicture},
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction},
+            </if>
+            <if test="hourlyRate != null">
+                hourly_rate = #{hourlyRate},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="region != null">
+                region = #{region},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateStatus" parameterType="com.example.pojo.Category">
+        UPDATE housekeeping.domestic_workers set status = 1 where service_category = #{id}
+    </update>
+
+    <delete id="deleteByIds" parameterType="java.util.List">
+        DELETE FROM housekeeping.domestic_workers
+        WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="list" resultType="com.example.pojo.DomesticWorker">
+        select * from housekeeping.domestic_workers
+        <where>
+        <if test="name != null">
+            name like concat('%',#{name},'%')
+        </if>
+        </where>
+    </select>
+
+    <select id="getByServiceCategory" resultType="com.example.pojo.DomesticWorker">
+        select * from housekeeping.domestic_workers
+        <where>
+            <if test="name != null">
+                name like concat('%',#{name},'%')
+            </if>
+            <if test="serviceCategory != null">
+                and service_category = #{serviceCategory}
+            </if>
+        </where>
+    </select>
+
+</mapper>
+
+

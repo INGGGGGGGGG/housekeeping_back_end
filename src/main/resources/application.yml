@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: house-keeping
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/housekeeping
+    username: root
+    password: 1234
+
+  servlet:
+    multipart:
+      #配置单个文件最大上传大小
+      max-file-size: 10MB
+      #配置单个请求最大上传大小(一次请求可以上传多个文件)
+      max-request-size: 100MB
+
+mybatis:
+  configuration:
+    #将mybatis日志输出到控制台，即SQL语句输出到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启驼峰命名：如果字段名与属性名符合驼峰命名规则，mybatis会自动通过驼峰命名规则映射
+    map-underscore-to-camel-case: true
+
+#自定义的阿里云配置信息
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    bucketName: hmleadnews-web-test
+
+#开启spring事务管理日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
