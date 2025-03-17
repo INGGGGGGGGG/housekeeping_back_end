@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-// TODO 上架数据地区查找处理，AI智能推荐实现，订单，预约实现，商家入驻成功后跳转或者回显实现，用户登录实现
+// TODO 上架数据地区查找处理，AI智能推荐实现，商家入驻成功后跳转或者回显实现，用户登录实现
 @Slf4j
 @RequestMapping("/category")
 @RestController

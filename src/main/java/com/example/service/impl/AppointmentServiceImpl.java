@@ -2,11 +2,14 @@ package com.example.service.impl;
 
 import com.example.mapper.AppointmentMapper;
 import com.example.pojo.Appointment;
+import com.example.pojo.AppointmentQueryDTO;
 import com.example.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
@@ -22,7 +25,13 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteByStaffId(Integer staffId) {
-        appointmentMapper.deleteByStaffId(staffId);
+    public List<Date> queryByStaffId(Integer staffId) {
+        return appointmentMapper.queryByStaffId(staffId);
     }
+
+    @Override
+    public List<Integer> queryByAppointmentQueryDTO(AppointmentQueryDTO appointmentQueryDTO) {
+        return appointmentMapper.queryByAppointmentQueryDTO(appointmentQueryDTO);
+    }
+
 }
