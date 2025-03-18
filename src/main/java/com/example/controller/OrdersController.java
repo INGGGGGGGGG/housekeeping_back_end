@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.pojo.OrdersQueryDTO;
 import com.example.pojo.PageBean;
 import com.example.pojo.PageQueryDTO;
 import com.example.pojo.Result;
@@ -16,16 +17,6 @@ public class OrdersController {
 
     @Autowired
     private OrdersService ordersService;
-
-    /*
-    新增数据
-     */
-    @PostMapping
-    public Result add(Integer staffId) {
-        log.info("新增数据:{}", staffId);
-        ordersService.add(staffId);
-        return Result.success();
-    }
 
     /*
     修改订单状态为取消预约

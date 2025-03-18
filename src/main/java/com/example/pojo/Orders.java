@@ -20,5 +20,5 @@ public class Orders {
     private Integer status;          // 状态(0已取消1已预约2已完成)
     private LocalDateTime orderTime; // 下单日期
     private LocalDateTime updateTime;// 修改日期
-    private Integer userId;          // 用户ID
+    private Integer appointmentId;   // 预约表ID
 }

@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mapper.AppointmentMapper">
 
-    <insert id="add" parameterType="com.example.pojo.Appointment">
+    <insert id="add" parameterType="com.example.pojo.Appointment" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO appointment (staff_id, appointment_date, appointment_session, client_name, client_phone,
                                  client_address, create_time, update_time)
         VALUES (#{staffId}, #{appointmentDate}, #{appointmentSession}, #{clientName}, #{clientPhone}, #{clientAddress},

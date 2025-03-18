@@ -12,4 +12,6 @@ public interface AppointmentService {
     List<Date> queryByStaffId(Integer staffId);
 
     List<Integer> queryByAppointmentQueryDTO(AppointmentQueryDTO appointmentQueryDTO);
+
+//    void delete(Integer id);
 }

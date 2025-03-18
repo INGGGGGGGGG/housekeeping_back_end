@@ -5,10 +5,18 @@
 
     <insert id="add" parameterType="com.example.pojo.Orders">
         INSERT INTO orders (order_number, staff_id, staff_name, staff_image, hourly_rate, payment_method, status,
-                            order_time, update_time, user_id)
+                            order_time, update_time, appointment_id)
         VALUES (#{orderNumber}, #{staffId}, #{staffName}, #{staffImage}, #{hourlyRate}, #{paymentMethod}, #{status},
-                #{orderTime}, #{updateTime}, #{userId})
+                #{orderTime}, #{updateTime}, #{appointmentId})
     </insert>
+
+    <update id="updateByAppointmentId" parameterType="com.example.pojo.Orders">
+        update housekeeping.orders
+        set status      = #{status},
+            update_time = #{updateTime}
+        where appointment_id = #{appointmentId}
+          and status = 1
+    </update>
 
     <select id="list" resultType="com.example.pojo.Orders">
         select *
