@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import com.example.pojo.Category;
 import com.example.pojo.DomesticWorker;
+import com.example.pojo.POIQueryVO;
 import com.example.pojo.PageQueryDTO;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Delete;
@@ -32,4 +33,6 @@ public interface DomesticWorkerMapper {
     void updateStatus(Category category);
 
     Page<DomesticWorker> getByServiceCategory(PageQueryDTO pageQueryDTO);
+
+    List<POIQueryVO> getByPOI();
 }

@@ -90,6 +90,24 @@
         </where>
     </select>
 
+    <select id="getByPOI" resultType="com.example.pojo.POIQueryVO">
+        SELECT dw.name         as 'name',
+                c.name          AS 'category',
+                dw.introduction as 'introduction',
+                dw.hourly_rate  as 'hourly_rate',
+                dw.phone_number as 'phone_number',
+                dw.age          as 'age',
+                CASE dw.gender
+                    WHEN 0 THEN '男'
+                    WHEN 1 THEN '女'
+                    ELSE '未知'
+                    END         AS 'gender',
+                dw.region       as 'region'
+        FROM housekeeping.domestic_workers dw
+                 LEFT JOIN housekeeping.category c ON dw.service_category = c.ID
+        WHERE dw.status = 0;
+    </select>
+
 </mapper>
 
 
